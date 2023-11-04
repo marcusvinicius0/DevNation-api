@@ -1,0 +1,113 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  RECRUITER
+  ADMIN
+}
+
+model User {
+  id           String  @id @default(uuid())
+  email        String  @unique
+  name         String
+  nickname     String  @unique
+  post         String
+  password     String
+  presentation String?
+  isVerified   Boolean @default(false)
+  banner       String?
+  avatar       String?
+  location     String?
+  linkedinURL  String?
+  githubURL    String?
+  defaultURL   String?
+  xp           Int     @default(50)
+  isBanned     Boolean @default(false)
+
+  publications Publications[]
+  projects     DevProjects[]
+  likes        Likes[]
+  comments     Comment[]
+
+  role Role @default(USER)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Publications {
+  id       String  @id @default(uuid())
+  author   User?   @relation(fields: [authorID], references: [id])
+  authorID String?
+
+  publication String
+  image       String?
+
+  likes    Likes[]
+  Comments Comment[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("publications")
+}
+
+model DevProjects {
+  id       String @id @default(uuid())
+  author   User?  @relation(fields: [authorID], references: [id])
+  authorID String
+
+  title       String
+  description String
+  banner      String?
+  gif         String?
+  link        String
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("devProjects")
+}
+
+model Likes {
+  id                String           @id @default(uuid())
+  DevPublications   Publications? @relation(fields: [devPublicationsID], references: [id])
+  devPublicationsID String?
+
+  author   User?   @relation(fields: [authorID], references: [id])
+  authorID String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("likes")
+}
+
+model Comment {
+  id       String  @id @default(uuid())
+  author   User?   @relation(fields: [authorID], references: [id])
+  authorID String?
+
+  publication   Publications? @relation(fields: [publicationID], references: [id])
+  publicationID String
+
+  comment String
+  image   String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("comments")
+}
