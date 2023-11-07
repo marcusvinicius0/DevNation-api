@@ -1,5 +1,6 @@
 import * as Yup from "yup";
 import { UserProps } from "../@types/user";
+import { CorsOptions } from "cors";
 
 export const userValidationSchema = Yup.object().shape({
   id: Yup.string().required(),
@@ -30,3 +31,11 @@ export const removeKeyAccessFromJson = (data: UserProps) => {
 
   return filteredJson;
 }
+
+const allowedOrigins = ["http://localhost:3001"];
+const methods = ["GET", "POST", "PUT"];
+
+export const options: CorsOptions = {
+  origin: allowedOrigins,
+  methods: methods,
+};

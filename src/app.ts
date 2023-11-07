@@ -1,17 +1,14 @@
-import express, { NextFunction } from 'express';
-import routes from './routes/route';
+import express from "express";
+import routes from "./routes/route";
+import cors from "cors";
+import { options } from "./helpers";
 
+import "./database";
 class App {
   app: any;
   constructor() {
     this.app = express();
-    // this.app.use((res: any, next: NextFunction) => {
-    //   res.setHeader("Access-Control-Allow-Origin", "*"),
-    //   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE");
-    //   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-    //   next();
-    // })
-
+    this.app.use(cors(options));
     this.middlewares();
     this.routes();
   }
