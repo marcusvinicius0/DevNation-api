@@ -3,7 +3,7 @@ import routes from "./routes/route";
 import cors from "cors";
 import { options } from "./helpers";
 
-import "./database";
+// import "./database";
 class App {
   app: any;
   constructor() {
