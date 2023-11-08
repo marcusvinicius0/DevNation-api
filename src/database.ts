@@ -1,14 +1,14 @@
-import pg from "pg";
+// import pg from "pg";
 
-const { Pool } = pg;
+// const { Pool } = pg;
 
-const pool = new Pool({
-  connectionString: process.env.POSTGRES_URL + "?sslmode=require",
-});
+// const pool = new Pool({
+//   connectionString: process.env.POSTGRES_URL + "?sslmode=require",
+// });
 
-pool.connect((err) => {
-  if (err) throw err;
-  console.log("Connect to PostgeSQL successfully!");
-});
+// pool.connect((err) => {
+//   if (err) throw err;
+//   console.log("Connect to PostgeSQL successfully!");
+// });
 
-export default pool;
+// export default pool;
