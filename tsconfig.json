@@ -11,5 +11,5 @@
     "skipLibCheck": true,
     "resolveJsonModule": true
   },
-  "include": ["./api/*.ts", "./public/*"]
+  "include": ["./api/index.ts", "./public/*", "./vercel/*"]
 }
