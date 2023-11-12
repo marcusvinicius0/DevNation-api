@@ -3,25 +3,25 @@ import { createRegisterUserService } from "../../helpers/services";
 
 class CreateUserController {
   async store(req: Request, res: Response): Promise<UserProps> {
-    const { user }: any = req.body;
+    const { name, email, password }: any = req.body;
 
     const userData = {
-      email: user.email,
-      name: user.name,
-      nickname: user.nickname,
-      post: user.post,
-      password: user.password,
-      presentation: user.presentation,
-      isVerified: user.isVerified,
-      banner: user.banner,
-      avatar: user.avatar,
-      location: user.location,
-      linkedinURL: user.linkedinURL,
-      githubURL: user.githubURL,
-      defaultURL: user.defaultURL,
-      xp: user.xp,
-      isBanned: user.isBanned,
-      role: user.role,
+      email: email,
+      name: name,
+      nickname: null,
+      post: "",
+      password: password,
+      presentation: "",
+      isVerified: false,
+      banner: "",
+      avatar: "",
+      location: "",
+      linkedinURL: "",
+      githubURL: "",
+      defaultURL: "",
+      xp: 50,
+      isBanned: false,
+      role: "USER",
     };
 
     createRegisterUserService;
