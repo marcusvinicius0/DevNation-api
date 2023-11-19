@@ -11,8 +11,8 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "typeRoots": [
-      "./src/@types"
+      "./src/@types/*"
     ]
   },
-  "include": ["./api/*", "./public/*", "./vercel/*"]
+  "include": ["./public/*", "./vercel/*", "./src"]
 }

@@ -3,23 +3,23 @@ import { createRegisterUserService } from "../../helpers/services";
 
 class CreateUserController {
   async store(req: Request, res: Response): Promise<UserProps> {
-    const { name, email, password }: any = req.body;
-
+    const { data }: any = req.body;
+    console.log(data);
     const userData = {
-      email: email,
-      name: name,
-      nickname: null,
-      post: "",
-      password: password,
-      presentation: "",
+      email: data.email,
+      name: data.name,
+      nickname: data.nickname,
+      post: data.post,
+      password: data.password,
+      presentation: data.presentation,
       isVerified: false,
-      banner: "",
-      avatar: "",
-      location: "",
-      linkedinURL: "",
-      githubURL: "",
-      defaultURL: "",
-      xp: 50,
+      banner: data.banner,
+      avatar: data.avatar,
+      location: data.location,
+      linkedinURL: data.linkedinURL,
+      githubURL: data.githubURL,
+      defaultURL: data.defaultURL,
+      xp: data.xp,
       isBanned: false,
       role: "USER",
     };

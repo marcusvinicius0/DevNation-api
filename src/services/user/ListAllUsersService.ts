@@ -1,8 +1,6 @@
 import { response } from "express";
 import prismaClient from "../../prisma";
-
 import { removeKeyAccessFromJson } from "../../helpers";
-
 class ListAllUsersService {
   async execute() {
     const users = await prismaClient.user.findMany({

@@ -20,7 +20,7 @@ model User {
   id           String  @id @default(uuid())
   email        String  @unique
   name         String
-  nickname     String?  @unique
+  nickname     String? @unique
   post         String?
   password     String
   presentation String?
@@ -82,7 +82,7 @@ model DevProjects {
 }
 
 model Likes {
-  id                String           @id @default(uuid())
+  id                String        @id @default(uuid())
   DevPublications   Publications? @relation(fields: [devPublicationsID], references: [id])
   devPublicationsID String?
 
